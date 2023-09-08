@@ -1,7 +1,8 @@
+import Question from "./Question/index";
 
 function App() {
   return (
-    <div></div>
+    <Question />
   );
 }
 
