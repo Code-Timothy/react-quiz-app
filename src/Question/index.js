@@ -1,24 +1,32 @@
 import { questions } from "./questions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Question = () => {
-    const [currentQuestionId, setCurrentQuestionId] = useState(1);
-    const [question, setQuestion] = useState(questions.find((question) => question.id === currentQuestionId));
+    const [currentQuestionId, setCurrentQuestionId] = useState(0);
+    const [question, setQuestion] = useState(questions[currentQuestionId]);
+    const [answer, setAnswer] = useState(question ? questions[currentQuestionId].answers : null);
+
+    useEffect(() => {
+        setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
+    }, [question]);
 
     const nextQuestion = () => {
-        setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
-        const nextQuestion = questions.find((question) => question.id === currentQuestionId + 1);
-        setQuestion(nextQuestion);
+        setQuestion(questions[currentQuestionId]);
+        setAnswer(questions[currentQuestionId].answers);
     };
 
     return (
         <div>
-            <p>{question.content}</p>
-            {question.answers.map((answer) =>
-                <button onClick={nextQuestion}>{answer.text}</button>
+            {question && (
+                <>
+                    <p>{question.content}</p>
+                    {question.answers.map((answer) => (
+                        <button key={answer.id} onClick={() => nextQuestion()}>{answer.text}</button>
+                    ))}
+                </>
             )}
         </div>
-    )
+    );
 };
 
 export default Question;
