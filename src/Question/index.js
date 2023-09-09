@@ -15,13 +15,25 @@ const Question = () => {
         setAnswer(questions[currentQuestionId].answers);
     };
 
+    const handleButtonClick = (answerId) => {
+        const updatedAnswers = answer.map((answer) => {
+            if (answer.id === answerId) {
+                return { ...answer, isSelected: true };
+            }
+            return answer;
+        });
+
+        const selectedAnswer = updatedAnswers.find((answer) => answer.isSelected === true);
+        const correctAnswer = answer.find((answer) => answer.isCorrect === true);
+    };
+
     return (
         <div>
             {question && (
                 <>
                     <p>{question.content}</p>
                     {question.answers.map((answer) => (
-                        <button key={answer.id} onClick={() => nextQuestion()}>{answer.text}</button>
+                        <button key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</button>
                     ))}
                 </>
             )}
