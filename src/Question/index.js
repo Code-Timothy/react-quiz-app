@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const [question, setQuestion] = useState(questions[currentQuestionId]);
-    const [answer, setAnswer] = useState(question ? questions[currentQuestionId].answers : null);
+    const [answer, setAnswer] = useState(questions[0].answers);
     const [score, setScore] = useState(0);
 
     useEffect(() => {
-        setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
+        if (question && (currentQuestionId < questions.length - 1)) {
+            setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
+        } else {
+
+        }
     }, [question]);
 
     const nextQuestion = () => {
@@ -30,12 +34,10 @@ const Question = () => {
     };
 
     const isCorrectAnswer = (selectedAnswer) => {
-        console.log(selectedAnswer)
         if (selectedAnswer.isSelected === true && selectedAnswer.isCorrect === true) {
             setScore(score => score + 1);
             nextQuestion();
         } else {
-            setScore(score => score);
             nextQuestion();
         }
     };
