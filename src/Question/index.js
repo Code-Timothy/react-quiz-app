@@ -5,6 +5,7 @@ const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const [question, setQuestion] = useState(questions[currentQuestionId]);
     const [answer, setAnswer] = useState(question ? questions[currentQuestionId].answers : null);
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
@@ -24,13 +25,26 @@ const Question = () => {
         });
 
         const selectedAnswer = updatedAnswers.find((answer) => answer.isSelected === true);
-        const correctAnswer = answer.find((answer) => answer.isCorrect === true);
+
+        isCorrectAnswer(selectedAnswer);
+    };
+
+    const isCorrectAnswer = (selectedAnswer) => {
+        console.log(selectedAnswer)
+        if (selectedAnswer.isSelected === true && selectedAnswer.isCorrect === true) {
+            setScore(score => score + 1);
+            nextQuestion();
+        } else {
+            setScore(score => score);
+            nextQuestion();
+        }
     };
 
     return (
         <div>
             {question && (
                 <>
+                    <p>{score}</p>
                     <p>{question.content}</p>
                     {question.answers.map((answer) => (
                         <button key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</button>
