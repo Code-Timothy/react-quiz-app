@@ -1,8 +1,11 @@
 import Question from "./Question/index";
+import Container from "./Container/index";
 
 function App() {
   return (
-    <Question />
+    <Container>
+      <Question />
+    </Container>
   );
 }
 
