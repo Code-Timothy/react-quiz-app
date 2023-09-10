@@ -1,5 +1,6 @@
 import { questions } from "./questions";
 import { useState, useEffect } from "react";
+import { StyledParagraph } from "./styled";
 
 const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
@@ -16,8 +17,8 @@ const Question = () => {
     }, [question]);
 
     const nextQuestion = () => {
-        setQuestion(questions[currentQuestionId]);
-        setAnswer(questions[currentQuestionId].answers);
+        setQuestion(questions.find((question) => question.id === currentQuestionId));
+        setAnswer(questions.find((question) => question.id === currentQuestionId).answers);
     };
 
     const handleButtonClick = (answerId) => {
@@ -46,8 +47,8 @@ const Question = () => {
         <div>
             {question && (
                 <>
-                    <p>{score}</p>
-                    <p>{question.content}</p>
+                    <StyledParagraph>{score}</StyledParagraph>
+                    <StyledParagraph>{question.content}</StyledParagraph>
                     {question.answers.map((answer) => (
                         <button key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</button>
                     ))}
