@@ -1,6 +1,6 @@
 import { questions } from "./questions";
 import { useState, useEffect } from "react";
-import { StyledParagraph } from "./styled";
+import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text } from "./styled";
 
 const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
@@ -44,17 +44,37 @@ const Question = () => {
     };
 
     return (
-        <div>
+        <Container>
             {question && (
                 <>
-                    <StyledParagraph>{score}</StyledParagraph>
-                    <StyledParagraph>{question.content}</StyledParagraph>
-                    {question.answers.map((answer) => (
-                        <button key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</button>
-                    ))}
+                    <Wrapper>
+                        <HeaderWrapper>
+                            <h2>Pytanie 1 / 6</h2>
+                            <StyledDiv>
+                                <Rank>
+                                    <Icon>👑</Icon>
+                                    <Title>
+                                        Rank
+                                        <Text>1/100</Text>
+                                    </Title>
+                                </Rank>
+                                <Rank second="true">
+                                    <Icon>💎</Icon>
+                                    <Title>
+                                        Score
+                                        <Text>{score}/{questions.length}</Text>
+                                    </Title>
+                                </Rank>
+                            </StyledDiv>
+                        </HeaderWrapper>
+                        <StyledDiv>{question.content}</StyledDiv>
+                        {question.answers.map((answer) => (
+                            <button key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</button>
+                        ))}
+                    </Wrapper>
                 </>
             )}
-        </div>
+        </Container>
     );
 };
 

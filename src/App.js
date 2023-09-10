@@ -5,8 +5,8 @@ import StartPage from "./StartPage/index";
 function App() {
   return (
     <Container>
-      <StartPage />
-      {/* <Question /> */}
+      {/* <StartPage /> */}
+      <Question />
     </Container>
   );
 }
