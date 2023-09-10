@@ -1,12 +1,5 @@
 import styled, { css } from "styled-components";
 
-export const StyledDiv = styled.div`
-    margin: 0;
-    display: flex;
-    border-radius: 20px;
-    box-shadow: 0px 0px 17px 5px rgba(230,241,247,1);
-`;
-
 export const Container = styled.div`
     margin: 0 auto;
     padding-top: 50px;
@@ -15,6 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+    margin: 10px;
     padding: 25px;
     display: grid;
     gap: 25px;
@@ -26,6 +20,15 @@ export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #e6f1f7;
+`;
+
+export const StyledDiv = styled.div`
+    margin: 0;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0px 0px 17px 5px rgba(230,241,247,1);
 `;
 
 export const QuestionCounter = styled.h2`
@@ -59,4 +62,23 @@ export const Title = styled.div`
 export const Text = styled.div`
     font-size: 14px;
     color: #000000;
+`;
+
+export const QuestionContent = styled.p`
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+`;
+
+export const Answer = styled.button`
+    color: #000000;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+
+    &&:hover{
+        cursor: pointer;
+        background-color: rgb(248, 217, 76);
+    }
 `;

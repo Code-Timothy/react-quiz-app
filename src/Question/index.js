@@ -1,6 +1,6 @@
 import { questions } from "./questions";
 import { useState, useEffect } from "react";
-import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text, QuestionCounter } from "./styled";
+import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text, QuestionCounter, QuestionContent, Answer } from "./styled";
 
 const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
@@ -67,9 +67,11 @@ const Question = () => {
                                 </Rank>
                             </StyledDiv>
                         </HeaderWrapper>
-                        <StyledDiv>{question.content}</StyledDiv>
+                        <QuestionContent>
+                            {question.content}
+                        </QuestionContent>
                         {question.answers.map((answer) => (
-                            <button key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</button>
+                            <Answer key={answer.id} onClick={() => handleButtonClick(answer.id)}>{answer.text}</Answer>
                         ))}
                     </Wrapper>
                 </>

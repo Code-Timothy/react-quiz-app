@@ -1,12 +1,12 @@
 export const questions = [
     {
         id: 0,
-        content: "Przykładowe pytanie 1",
+        content: "Jaką komendą stworzymy create-react-app:",
         answers: [
-            { id: 1, text: "Odpowiedź 1", isCorrect: false, isSelected: false, },
-            { id: 2, text: "TOdpowiedź 2", isCorrect: true, isSelected: false, },
-            { id: 3, text: "Odpowiedź 3", isCorrect: false, isSelected: false, },
-            { id: 4, text: "Odpowiedź 4", isCorrect: false, isSelected: false, },
+            { id: 1, text: "npm create-react-app nazwa-aplikacji", isCorrect: false, isSelected: false, },
+            { id: 2, text: "npx create-react-app nazwa-aplikacji", isCorrect: true, isSelected: false, },
+            { id: 3, text: "npx install create-react-app nazwa-aplikacji", isCorrect: false, isSelected: false, },
+            { id: 4, text: "Żadne z powyższych", isCorrect: false, isSelected: false, },
         ],
     },
     {
