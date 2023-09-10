@@ -1,6 +1,6 @@
 import { questions } from "./questions";
 import { useState, useEffect } from "react";
-import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text } from "./styled";
+import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text, QuestionCounter } from "./styled";
 
 const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
@@ -49,7 +49,7 @@ const Question = () => {
                 <>
                     <Wrapper>
                         <HeaderWrapper>
-                            <h2>Pytanie 1 / 6</h2>
+                            <QuestionCounter>Pytanie #{currentQuestionId}</QuestionCounter>
                             <StyledDiv>
                                 <Rank>
                                     <Icon>👑</Icon>

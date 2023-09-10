@@ -28,6 +28,10 @@ export const HeaderWrapper = styled.div`
     align-items: center;
 `;
 
+export const QuestionCounter = styled.h2`
+    color: #000000;
+`;
+
 export const Rank = styled.div`
     width: 80px;
     padding: 20px;
