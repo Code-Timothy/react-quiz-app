@@ -22,6 +22,10 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     padding-bottom: 25px;
     border-bottom: 2px solid #e6f1f7;
+
+    @media(max-width: 500px) {
+        flex-direction: column;
+    }
 `;
 
 export const StyledDiv = styled.div`
@@ -69,6 +73,10 @@ export const QuestionContent = styled.p`
     font-size: 18px;
     color: #000000;
     font-weight: bold;
+
+    @media(max-width: 500px){
+        font-size: 16px;
+    }
 `;
 
 export const Answer = styled.button`
@@ -80,5 +88,9 @@ export const Answer = styled.button`
     &&:hover{
         cursor: pointer;
         background-color: rgb(248, 217, 76);
+    }
+
+    @media(max-width: 500px){
+        font-size: 14px;
     }
 `;
