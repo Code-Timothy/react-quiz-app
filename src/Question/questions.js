@@ -59,4 +59,14 @@ export const questions = [
             { id: 4, text: "Do usuwania elementów z tablicy", isCorrect: false, isSelected: false, },
         ],
     },
+    {
+        id: 6,
+        content: "Do czego służy metoda find() w JavaScript:",
+        answers: [
+            { id: 1, text: "Służy do sortowania elementów w liście", isCorrect: false, isSelected: false, },
+            { id: 2, text: "Służy do dodawania nowych elementów do tablicy", isCorrect: false, isSelected: false, },
+            { id: 3, text: "Służy do wyszukiwania pierwszego elementu w tablicy, który spełnia określone kryteria", isCorrect: true, isSelected: false, },
+            { id: 4, text: "Do usuwania elementów z tablicy", isCorrect: false, isSelected: false, },
+        ],
+    },
 ];
