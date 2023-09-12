@@ -3,16 +3,21 @@ import { useState, useEffect } from "react";
 import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text, QuestionCounter, QuestionContent, Answer } from "./styled";
 
 const Question = () => {
-    const [currentQuestionId, setCurrentQuestionId] = useState(0);
+    const [currentQuestionId, setCurrentQuestionId] = useState(JSON.parse(localStorage.getItem("currentQuestionId")) || 0);
     const [question, setQuestion] = useState(questions[currentQuestionId]);
     const [answer, setAnswer] = useState(questions[0].answers);
     const [score, setScore] = useState(0);
 
     useEffect(() => {
+        localStorage.setItem("currentQuestionId", JSON.stringify(currentQuestionId));
+    }, [currentQuestionId]);
+
+    useEffect(() => {
         if (question && (currentQuestionId < questions.length - 1)) {
             setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
-        } else {
-
+        } else if (currentQuestionId === questions.length - 1) {
+            setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
+        
         }
     }, [question]);
 
