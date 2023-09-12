@@ -6,18 +6,22 @@ const Question = () => {
     const [currentQuestionId, setCurrentQuestionId] = useState(JSON.parse(localStorage.getItem("currentQuestionId")) || 0);
     const [question, setQuestion] = useState(questions[currentQuestionId]);
     const [answer, setAnswer] = useState(questions[0].answers);
-    const [score, setScore] = useState(0);
+    const [score, setScore] = useState(JSON.parse(localStorage.getItem("score")) || 0);
 
     useEffect(() => {
         localStorage.setItem("currentQuestionId", JSON.stringify(currentQuestionId));
     }, [currentQuestionId]);
 
     useEffect(() => {
+        localStorage.setItem("score", JSON.stringify(score));
+    }, [score]);
+
+    useEffect(() => {
         if (question && (currentQuestionId < questions.length - 1)) {
             setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
         } else if (currentQuestionId === questions.length - 1) {
             setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
-        
+
         }
     }, [question]);
 
