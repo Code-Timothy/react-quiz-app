@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { Container, Wrapper, StyledDiv, HeaderWrapper, Rank, Icon, Title, Text, QuestionCounter, QuestionContent, Answer } from "./styled";
 
 const Question = () => {
-    const [currentQuestionId, setCurrentQuestionId] = useState(JSON.parse(localStorage.getItem("currentQuestionId")) || 0);
-    const [question, setQuestion] = useState(questions[currentQuestionId]);
-    const [answer, setAnswer] = useState(questions[0].answers);
+    const initialQuestionId = JSON.parse(localStorage.getItem("currentQuestionId")) || 0;
+    const initialQuestion = questions[initialQuestionId];
+
+    const [currentQuestionId, setCurrentQuestionId] = useState(initialQuestionId);
+    const [question, setQuestion] = useState(initialQuestion);
+    const [answer, setAnswer] = useState(questions[currentQuestionId].answers);
     const [score, setScore] = useState(JSON.parse(localStorage.getItem("score")) || 0);
 
     useEffect(() => {
@@ -18,12 +21,13 @@ const Question = () => {
 
     useEffect(() => {
         if (question && (currentQuestionId < questions.length - 1)) {
+            setQuestion(questions.find((question) => question.id === currentQuestionId));
+            setAnswer(questions.find((question) => question.id === currentQuestionId).answers);
             setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
-        } else if (currentQuestionId === questions.length - 1) {
-            setCurrentQuestionId(currentQuestionId => currentQuestionId + 1);
-
+        } else {
+            console.log("Koniec quizu");
         }
-    }, [question]);
+    }, [question])
 
     const nextQuestion = () => {
         setQuestion(questions.find((question) => question.id === currentQuestionId));
