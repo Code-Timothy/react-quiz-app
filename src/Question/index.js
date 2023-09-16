@@ -27,7 +27,7 @@ const Question = () => {
         } else {
             console.log("Koniec quizu");
         }
-    }, [question])
+    }, [question]);
 
     const nextQuestion = () => {
         setQuestion(questions.find((question) => question.id === currentQuestionId));
