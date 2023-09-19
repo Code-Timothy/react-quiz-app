@@ -19,7 +19,7 @@ const Question = () => {
         localStorage.setItem("score", JSON.stringify(score));
     }, [score]);
 
-    useEffect(() => {
+    const nextQuestion = () => {
         if (question && (currentQuestionId < questions.length - 1)) {
             setQuestion(questions.find((question) => question.id === currentQuestionId));
             setAnswer(questions.find((question) => question.id === currentQuestionId).answers);
@@ -27,11 +27,6 @@ const Question = () => {
         } else {
             console.log("Koniec quizu");
         }
-    }, [question]);
-
-    const nextQuestion = () => {
-        setQuestion(questions.find((question) => question.id === currentQuestionId));
-        setAnswer(questions.find((question) => question.id === currentQuestionId).answers);
     };
 
     const handleButtonClick = (answerId) => {
